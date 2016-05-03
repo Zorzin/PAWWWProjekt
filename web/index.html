@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="./css.css" media="screen" type="text/css">
-        <title>Hurtownia PAWWW</title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <section id="section">
-            <div id="login">
-                <form>
-                    <input type="button" value="Zaloguj"/>
-                    <input type="button" value="Zarejestruj"/>
-                </form>
-                
-            </div>
-            <div id="logo">
-                <!-- logo here -->
-                <h1>LOGO</h1>
-            </div>
-            <div id="menu">
-                <!-- menu here -->
-                <ul>
-                    <li><a href="#">Strona główna</a></li>
-                    <li><a href="">Rejestracja</a></li>
-                    <li><a href="">Logowanie</a></li>
-                    <li><a href="">Koszyk</a></li>
-                    <li><a href="">Produkty</a></li>
-                    <li id="last"><a href="">Kontakt</a></li>
-                </ul>
-            </div>
-            <div id="mainpage">
-                <!-- main page, ajax pewnie -->
-                <p>
-                    MAIN PAGE
-                </p>
-            </div>
-            <div id="footer">
-                <!-- stopka, jakies linki czy cos -->
-                <h1>STOPKA</h1>
-            </div>
-        </section>
-    </body>
+
+<head>
+    <link rel="stylesheet" href="./css.css" media="screen" type="text/css">
+    <title>Hurtownia PAWWW</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <section id="section">
+        <div id="login">
+            <input type="button" value="Zaloguj" onclick="location.href='login.html'" />
+            <input type="button" value="Zarejestruj" onclick="location.href='register.html'" />
+
+        </div>
+        <div id="logo">
+            <!-- logo here -->
+            <h1>LOGO</h1>
+        </div>
+        <div id="menu">
+            <!-- menu here -->
+            <ul>
+                <li><a href="#">Strona główna</a></li>
+                <li><a href="register.html">Rejestracja</a></li>
+                <li><a href="login.html">Logowanie</a></li>
+                <li><a href="">Koszyk</a></li>
+                <li><a href="">Produkty</a></li>
+                <li id="last"><a href="">Kontakt</a></li>
+            </ul>
+        </div>
+        <div id="mainpage">
+            <!-- main page, ajax pewnie -->
+        </div>
+        <div id="footer">
+            <!-- stopka, jakies linki czy cos -->
+            <h1>STOPKA</h1>
+        </div>
+    </section>
+</body>
+
 </html>

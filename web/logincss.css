@@ -57,3 +57,7 @@ body,html{
     min-height: 70vh;
     width: 50%;
 }
+
+#login input{
+    margin: 5px;
+}
