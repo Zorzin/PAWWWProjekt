@@ -23,10 +23,19 @@ body,html{
     overflow:auto;
     background:#888888 !important;
     width:15%;
-    height:70vh !important;
+    min-height:70vh !important;
     float:left;
     text-align: center;
     margin: 0;
+}
+#mainpage{
+    overflow:auto;
+    min-height:70vh;
+}
+#footer{
+    float: left;
+    background:#888888;
+    width: 100%;
 }
 #logo h1{
     text-align:center;
@@ -64,15 +73,7 @@ a{
 li:hover{
 	background:#555F55;
 }
-#mainpage{
-    overflow:auto;
-    height:70vh;
-}
-#footer{
-    float: left;
-    background:#888888;
-    width: 100%;
-}
+
 #login{
     float: right;
 }
