@@ -31,6 +31,7 @@ body,html{
 #mainpage{
     overflow:auto;
     min-height:70vh;
+    width: 85%;
 }
 #footer{
     float: left;
@@ -80,4 +81,57 @@ li:hover{
 
 input{
     margin: 5px;
+}
+
+/* Koszyk */
+
+#tittle, #photo, #amount, #cost{
+    float: left;
+    border: 1px solid #000;
+    display: inline-block;
+    height: 60px;
+    position:relative;
+}
+
+#tittle{
+    margin-left: 50px;
+    width: 25%;
+}
+#photo{
+    width: 15%;
+}
+#cost{
+    width: 15%;
+}
+#amount{
+    width: 15%;
+}
+p{
+    padding-right: 20px;
+    padding-left: 20px;
+    display:inline-block; 
+    vertical-align:middle
+}
+
+#amount input{
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#line{
+    width: 100%;
+    float: left;
+}
+#koszyk{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#podsumowanie{
+    margin-right: 10%;
+    float: right;
+    text-align: right;  
+    margin-top: 5px;
+    border-top: 1px solid #000;
 }
