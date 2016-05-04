@@ -1,0 +1,168 @@
+body{
+    margin:0;
+}
+body,html{
+  height:100%;
+}
+#logo{
+    background:#535a66;
+    height:30vh;
+}
+#logo h1{
+    margin:0;
+    text-align:center;
+    vertical-align:middle;
+    line-height:30vh;
+    color:#D4BFAA;
+    font-size:50px;
+}
+#menu{
+    overflow:auto;
+    background:#888888 !important;
+    width:15%;
+    min-height:70vh !important;
+    float:left;
+    text-align: center;
+    margin: 0;
+}
+
+#mainpage{
+    overflow:auto;
+    min-height:70vh;
+    width: 85%;
+}
+#footer{
+    float: left;
+    background:#888888;
+    width: 100%;
+}
+#logo h1{
+    text-align:center;
+    font-size: 32;
+}
+
+#section{
+    height:100%;
+}
+li{
+    vertical-align:middle;
+    padding:5px;
+    
+    list-style:none;
+    height:50px;
+    line-height:50px;
+    border-bottom:2px solid #000;
+}
+li a{
+    display:block;
+}
+ul{
+    margin: 5px;
+    border:2px solid #000;
+    background:#808080;
+    padding:0;
+}
+a{
+	text-decoration:none;
+	color:#000;
+}
+#last{
+    border-bottom:none;
+}
+li:hover{
+	background:#555F55;
+}
+
+
+hr {
+    border: 0;
+    background-color: #333;
+    height: 1px;
+    margin: 0 25px;
+    width: 300px;
+}
+
+table {
+    margin: 0 20px;
+    border-spacing: 0;
+    text-align: center;
+    border: solid 1px #f5eabe;
+}
+
+
+#singleColumn {
+    margin: 20px 30px;
+    text-align: left;
+}
+
+.lightBlue { background-color: #edf8f7 }
+
+.white { background-color: #fff }
+
+.bubble {
+    font-weight: bold;
+    background-color: #f5eabe;
+    padding: 5px;
+    color: inherit;
+}
+
+.hMargin { margin: 0 30px }
+
+.smallText { font-size: small }
+
+.categoryBox {
+    height: 176px;
+    width: 212px;
+    margin: 21px 14px 6px;
+    background: #ccc;
+}
+
+.categoryLabelText {
+    line-height: 150%;
+    font-size: x-large;
+}
+
+#categoryLeftColumn {
+    width: 185px;
+    float: left;
+    margin-top: 25px;
+    padding-left: 15px;
+}
+
+#categoryRightColumn {
+    margin-top: 10px;
+    width: 650px;
+    float: left;
+}
+
+.categoryButton {
+    margin: 15px 22px;
+    padding: 13px;
+    display: block;
+    background-color: #d3ede8;
+}
+
+#selectedCategory {
+    background-color: #b2d2d2;
+    margin-left: 10px;
+    width: 139px;
+}
+
+#categoryTitle {
+    margin: 0px 180px 0 0;
+    font-size: x-large;
+    float: right;
+    background-color: #f5eabe;
+    padding: 7px;
+}
+
+.categoryText {
+    line-height: 25px;
+    font-size: x-large;
+}
+
+#productTable { width: 600px }
+
+#productTable tr { height: 90px }
+
+#productTable td { width: 145px }
