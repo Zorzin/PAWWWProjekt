@@ -22,7 +22,7 @@
                 <td><fmt:formatNumber type="currency" currencySymbol="&euro; " value="${product.cena}"/></td>
 
                 <td>
-                    <form action="<c:url value='addToCart'/>" method="post">
+                    <form action="<c:url value='Dodaj'/>" method="post">
                         <input type="hidden"
                                name="productId"
                                value="${product.id}">

@@ -12,6 +12,14 @@
         <servlet-name>ServletKontrolny</servlet-name>
         <servlet-class>servlet.ServletKontrolny</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Dodaj</servlet-name>
+        <servlet-class>servlet.Dodaj</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCart</servlet-name>
+        <servlet-class>servlet.UpdateCart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletKontrolny</servlet-name>
         <url-pattern>/glowna</url-pattern>
@@ -43,6 +51,14 @@
     <servlet-mapping>
         <servlet-name>ServletKontrolny</servlet-name>
         <url-pattern>/sklepy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Dodaj</servlet-name>
+        <url-pattern>/Dodaj</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCart</servlet-name>
+        <url-pattern>/UpdateCart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -79,12 +79,13 @@ public class ServletKontrolny extends HttpServlet {
                 Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery("select * from produkty");
                 while (rs.next()) {
-                    System.out.println("weszlo");
                     Produkty produkty = new Produkty(rs.getInt("idprodukty"),rs.getString("nazwa"), rs.getString("opis"), 
                             rs.getDouble("cena"), rs.getString("sciezka"), rs.getInt("ilosc"), 
                             rs.getString("kategoria"));
                     lista.add(produkty);
                 }
+            ServletContext sc = this.getServletContext();
+            sc.setAttribute("produkty", lista);
             request.setAttribute("produkty", lista);
                 
             } catch (Exception e) {
@@ -93,7 +94,6 @@ public class ServletKontrolny extends HttpServlet {
 
         } else if (userPath.equals("/lista")) {
             // TODO: Implement koszyk request
-            System.out.println("koszyk");
 
         } else if (userPath.equals("/kontakt")) {
             // TODO: Implement kontakt request

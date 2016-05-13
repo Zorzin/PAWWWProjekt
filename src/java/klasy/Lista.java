@@ -43,6 +43,7 @@ public class Lista {
             Listaprodukt p = new Listaprodukt(produkt);
             listaproduktow.add(p);
         }
+        suma += produkt.getCena();
     }
 
     public synchronized void update(Produkty produkt, String ilosc) {
@@ -76,6 +77,7 @@ public class Lista {
                 listaproduktow.remove(item);
             }
         }
+        suma = getSubtotal();
     }
 
     public synchronized List<Listaprodukt> getProdukty() {

@@ -3,56 +3,59 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%-- HTML markup starts below --%>
+<%
 
+     ServletContext sc = request.getServletContext();
+     sc.getAttribute("listaprod");
+     sc.getAttribute("obiektlista");
+
+%>
 <div id="singleColumn">
 
      <h4 id="subtotal"><c:out value="Lacznie"/>:
-          <fmt:formatNumber type="currency" currencySymbol="&euro; " value="${cart.subtotal}"/>
+          <fmt:formatNumber type="currency" currencySymbol="&euro; " value="${obiektlista.suma}"/>
       </h4>
 
       <table id="cartTable">
 
         <tr class="header">
-            <th><c:out value="Produkt"/></th>
             <th><c:out value="Nazwa"/></th>
             <th><c:out value="Cena"/></th>
             <th><c:out value="Ilosc"/></th>
         </tr>
 
-        <c:forEach var="cartItem" items="${Lista.listaproduktow}" varStatus="iter">
+        <c:forEach var="cartItem" items="${listaprod}" varStatus="iter">
 
-          <c:set var="product" value="${Listaprodukt.produkt}"/>
+          <c:set var="product" value="${obiektlista}"/>
+          <c:set var="item" value="${cartItem.produkt}"/>
 
           <tr class="${((iter.index % 2) == 0) ? 'lightBlue' : 'white'}">
-            <td>
-                <img src="${initParam.productImagePath}${product.name}.png"
-                     alt="<fmt:message key= "${product.name}" />">
-            </td>
+            
 
-            <td><fmt:message key="${product.name}"/></td>
+            <td><c:out value="${item.nazwa}"/></td>
 
             <td>
-                <fmt:formatNumber type="currency" currencySymbol="&euro; " value="${cartItem.total}"/>
+                <fmt:formatNumber type="currency" currencySymbol="&euro; " value="${cartItem.suma}"/>
                 <br>
                 <span class="smallText" >(
-                    <fmt:formatNumber type="currency" currencySymbol="&euro; " value="${product.price}"/>
-                    / <fmt:message key="unit"/> )</span>
+                    <fmt:formatNumber type="currency" currencySymbol="&euro; " value="${item.cena}"/>
+                    / <c:out value="unit"/> )</span>
             </td>
 
             <td>
-                <form action="<c:url value='updateCart'/>" method="post">
+                <form action="<c:url value='UpdateCart'/>" method="post">
                     <input type="hidden"
                            name="productId"
-                           value="${product.id}">
+                           value="${item.id}">
                     <input type="text"
                            maxlength="2"
                            size="2"
-                           value="${cartItem.quantity}"
+                           value="${cartItem.ilosc}"
                            name="quantity"
                            style="margin:5px">
                     <input type="submit"
                            name="submit"
-                           value="<fmt:message key='update'/>">
+                           value="<c:out value='update'/>">
                 </form>
             </td>
           </tr>
