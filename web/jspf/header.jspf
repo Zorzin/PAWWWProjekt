@@ -1,0 +1,36 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/css.css" media="screen" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Hurtownia PAWWW</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="main">
+            <div id="header">
+                <div id="login">
+                    <% if(session.getAttribute("user")==null){ %>
+                    <input type="button" value="Zaloguj" onclick="location.href = 'login'" />
+                    <input type="button" value="Zarejestruj" onclick="location.href = 'rejestracja'" />
+                    <% }else{ %>
+                    <input type="button" value="Wyloguj" onclick="location.href = 'logout'" />
+                    <% } %>
+                </div>
+                <a href="">
+                    <img src="images/logo.jpg" id="logo" alt="logo">
+                </a>
+            </div>
+            <div id="nav">
+                <ul id="menu">
+                    <li><a href="/Projekt/">Strona główna</a></li>
+                    <li><a href="/Projekt/produkty">Produkty</a></li>
+                    <% if(session.getAttribute("user")!=null){ %>
+                    <li><a href="/Projekt/koszyk">Koszyk</a></li>
+                    <% } %>
+                    <li id="last"><a href="/Projekt/kontakt">Kontakt</a></li>
+                </ul>
+            </div>

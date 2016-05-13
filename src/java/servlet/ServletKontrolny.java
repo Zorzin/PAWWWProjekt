@@ -7,10 +7,14 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletKontrolny extends HttpServlet {
 
+    private List<String> _lista = new ArrayList<String>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,16 +36,8 @@ public class ServletKontrolny extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletKontrolny</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletKontrolny at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            /* TODO output your page here. You may use following sample code. */ 
+            
         }
     }
 
@@ -57,34 +54,39 @@ public class ServletKontrolny extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userPath = request.getServletPath();
-
+        HttpSession session = request.getSession();
         if (userPath.equals("/login")) {
             // TODO: Implement login request
-            userPath = "Login";
-
+            userPath = "/login";
+            
         } else if (userPath.equals("/rejestracja")) {
             // TODO: Implement rejestracja page request
-            userPath = "register";
-
+            userPath = "/register";
+            
         } else if (userPath.equals("/produkty")) {
             // TODO: Implement produkty page request
 
-            
         } else if (userPath.equals("/koszyk")) {
             // TODO: Implement koszyk request
 
-        }else if (userPath.equals("/glowna")) {
-            // TODO: Implement glowna request
-            userPath = "index";
-            
-        }else if (userPath.equals("/kontakt")) {
+        } else if (userPath.equals("/kontakt")) {
             // TODO: Implement kontakt request
 
+        } else if(userPath.equals("/logout")){
+            //Obsluga cookie
+            int i = _lista.size();
+            Cookie cookie = new Cookie(session.getAttribute("user").toString(),_lista.get(i-1));
+
+            // Usunie po 1h.
+            cookie.setMaxAge(60 * 60);
+            response.addCookie(cookie);
+            _lista.clear();
         }
 
         // use RequestDispatcher to forward request internally
-        String url = "/" + userPath + ".html";
-
+        String url = "./podstrony" + userPath + ".jsp";
+        String tmp = userPath.substring(userPath.lastIndexOf("/"));
+        _lista.add(tmp);
         try {
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception ex) {
