@@ -7,8 +7,6 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +20,6 @@ import javax.servlet.http.HttpSession;
  */
 public class ServletKontrolny extends HttpServlet {
 
-    private List<String> _lista = new ArrayList<String>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,8 +33,8 @@ public class ServletKontrolny extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */ 
-            
+            /* TODO output your page here. You may use following sample code. */
+
         }
     }
 
@@ -54,39 +51,53 @@ public class ServletKontrolny extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userPath = request.getServletPath();
+        String tmp = userPath.substring(userPath.lastIndexOf("/"));
         HttpSession session = request.getSession();
         if (userPath.equals("/login")) {
             // TODO: Implement login request
-            userPath = "/login";
-            
+
         } else if (userPath.equals("/rejestracja")) {
             // TODO: Implement rejestracja page request
             userPath = "/register";
-            
+
         } else if (userPath.equals("/produkty")) {
             // TODO: Implement produkty page request
-
+            if (session.getAttribute("user") != null) {
+                deleteCookie(request, response);
+                makeCookie(request, response, tmp);
+            }
         } else if (userPath.equals("/koszyk")) {
             // TODO: Implement koszyk request
+            if (session.getAttribute("user") != null) {
+                deleteCookie(request, response);
+                makeCookie(request, response, tmp);
+            }
 
         } else if (userPath.equals("/kontakt")) {
             // TODO: Implement kontakt request
+            if (session.getAttribute("user") != null) {
+                deleteCookie(request, response);
+                makeCookie(request, response, tmp);
+            }
 
-        } else if(userPath.equals("/logout")){
-            //Obsluga cookie
-            int i = _lista.size();
-            Cookie cookie = new Cookie(session.getAttribute("user").toString(),_lista.get(i-1));
-
-            // Usunie po 1h.
-            cookie.setMaxAge(60 * 60);
-            response.addCookie(cookie);
-            _lista.clear();
+        } else if (userPath.equals("/glowna")){
+            if (session.getAttribute("user") != null) {
+                deleteCookie(request, response);
+                makeCookie(request, response, "/");
+            }
         }
 
         // use RequestDispatcher to forward request internally
-        String url = "./podstrony" + userPath + ".jsp";
-        String tmp = userPath.substring(userPath.lastIndexOf("/"));
-        _lista.add(tmp);
+        String url;
+        if(!userPath.equals("/glowna"))
+        {
+            url = "./podstrony" + userPath + ".jsp";
+        }
+        else
+        {
+            url = "/";
+        }
+
         try {
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception ex) {
@@ -118,4 +129,26 @@ public class ServletKontrolny extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private void makeCookie(HttpServletRequest request, HttpServletResponse response, String path)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Cookie cookie = new Cookie(session.getAttribute("user").toString(), path);
+
+        // Usunie po 1h.
+        cookie.setMaxAge(60 * 60);
+        response.addCookie(cookie);
+    }
+
+    private void deleteCookie(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(session.getAttribute("user").toString())) {
+                    cookie.setMaxAge(0);
+                }
+            }
+        }
+    }
 }

@@ -4,4 +4,8 @@
         maxActive="100" maxIdle="30" maxWait="10000"
         username="root" password="root" driverClassName="com.mysql.jdbc.Driver"
         url="jdbc:mysql://localhost:3306/danelogowania"/>
+    <Resource name="jdbc/sklepy" auth="Container" type="javax.sql.DataSource"
+        maxActive="100" maxIdle="30" maxWait="10000"
+        username="root" password="root" driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/sklepydb"/>
 </Context>

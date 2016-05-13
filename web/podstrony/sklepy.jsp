@@ -2,8 +2,8 @@
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<sql:query var="result" dataSource="jdbc/danelogowania">
-    SELECT nazwa, adres FROM sklep
+<sql:query var="result" dataSource="jdbc/sklepy">
+    SELECT nazwa, adres, miasto FROM sklep
 </sql:query>
 <div class="info_right">
     <span style="font-size:36px;">
@@ -21,6 +21,7 @@
             <tr>
                 <th>Nazwa</th>
                 <th>Adres</th>
+                <th>Miasto</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                 <tr>
                     <td>${currentRow.nazwa}</td>
                     <td>${currentRow.adres}</td>
+                    <td>${currentRow.miasto}</td>
                 </tr>
             </c:forEach>
         </tbody>
