@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/Projekt/web/login.html</file>
-            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/Projekt/web/index.html</file>
-            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/Projekt/web/logincss.css</file>
-            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/Projekt/web/css.css</file>
+            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt-master/web/jspf/header.jspf</file>
+            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt-master/src/java/filters/koszykFilter.java</file>
+            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt-master/src/java/servlet/ServletKontrolny.java</file>
+            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt-master/web/podstrony/logout.jsp</file>
+            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt-master/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt-master/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt-master/web/testlogin.jsp</file>
         </group>
     </open-files>
 </project-private>
