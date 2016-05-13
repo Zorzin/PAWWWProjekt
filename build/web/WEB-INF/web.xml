@@ -2,11 +2,20 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>login</filter-name>
-        <filter-class>filters.koszykFilter</filter-class>
+        <filter-class>filters.login</filter-class>
+    </filter>
+    <filter>
+        <filter-name>koszykRejestracja</filter-name>
+        <filter-class>filters.koszykRejestracja</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>login</filter-name>
+        <filter-name>koszykRejestracja</filter-name>
         <url-pattern>/koszyk</url-pattern>
+        <url-pattern>/rejestracja</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>login</filter-name>
+        <url-pattern>/login</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>ServletKontrolny</servlet-name>
@@ -76,6 +85,12 @@
     </jsp-config>
     <resource-ref>
         <res-ref-name>jdbc/danelogowania</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+    <resource-ref>
+        <res-ref-name>jdbc/sklepy</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>

@@ -11,12 +11,15 @@
     </head>
     <body>
         <div id="main">
-            <div id="header">
+            <div id="header">              
                 <div id="login">
                     <% if(session.getAttribute("user")==null){ %>
                     <input type="button" value="Zaloguj" onclick="location.href = 'login'" />
-                    <input type="button" value="Zarejestruj" onclick="location.href = 'rejestracja'" />
                     <% }else{ %>
+                    <img style="vertical-align:bottom" src="images/avatar.png" width="38" height="38">
+                    <label id="headerLabel">
+                    <%out.print(session.getAttribute("user"));%>
+                    </label>
                     <input type="button" value="Wyloguj" onclick="location.href = 'logout'" />
                     <% } %>
                 </div>
@@ -26,10 +29,11 @@
             </div>
             <div id="nav">
                 <ul id="menu">
-                    <li><a href="/Projekt/">Strona główna</a></li>
+                    <li><a href="/Projekt/glowna">Strona główna</a></li>
                     <li><a href="/Projekt/produkty">Produkty</a></li>
                     <% if(session.getAttribute("user")!=null){ %>
                     <li><a href="/Projekt/koszyk">Koszyk</a></li>
+                    <li><a href="/Projekt/rejestracja">Dodaj sklep</a></li>
                     <% } %>
                     <li id="last"><a href="/Projekt/kontakt">Kontakt</a></li>
                 </ul>

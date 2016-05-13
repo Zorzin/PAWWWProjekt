@@ -5,35 +5,41 @@
 
 <%
     Integer id = 0;
-    String login = request.getParameter("login");
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
+    String nazwa = request.getParameter("nazwa");
+    String adres = request.getParameter("adres");
+    String miasto = request.getParameter("miasto");
+    ServletContext sc = this.getServletContext();
+    if (nazwa.equals("") || adres.equals("") || miasto.equals("")) {
+        sc.setAttribute("register", "error");
+        response.sendRedirect("/Projekt/rejestracja");
+    } else {
+        try {
+            Connection con = DBconnection.getMySQLConnection("sklepydb");
+            Statement stmt = con.createStatement();
 
-    try {
-        Connection con = DBconnection.getMySQLConnection("danelogowania");
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select id from user");
+            ResultSet rs = stmt.executeQuery("select id from sklep");
 
-        while (rs.next()) {
-            if (id < rs.getInt("id")) {
-                id = rs.getInt("id");
+            while (rs.next()) {
+                if (id < rs.getInt("id")) {
+                    id = rs.getInt("id");
+                }
             }
+            id = id + 1;
+
+            Statement st = con.createStatement();
+            String sql = "insert into sklep(id,nazwa,adres,miasto) VALUES ("
+                    + id + ",'" + nazwa + "','" + adres + "','" + miasto + "')";
+
+            int i = st.executeUpdate(sql);
+
+            if (i > 0) {
+                response.sendRedirect("/Projekt");
+            } else {
+                response.sendRedirect("/Projekt/rejestracja");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        id = id + 1;
-
-        Statement st = con.createStatement();
-        String sql = "insert into user(id,login,password,email) VALUES ("
-                + id + ",'" + login + "','" + password + "','" + email + "')";
-
-        int i = st.executeUpdate(sql);
-
-        if (i > 0) {
-            response.sendRedirect("/Projekt");
-        } else {
-            response.sendRedirect("/Projekt/rejestracja");
-        }
-
-    } catch (Exception e) {
-        e.printStackTrace();
     }
 %>
