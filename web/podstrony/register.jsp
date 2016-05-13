@@ -1,21 +1,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div id="reg">
-    <h1> Załóż nowe konto: </h1>
-    <h2> Wpisz swoje dane i załóż konto w hurtowni.</h2>
+    <h1> Dodaj sklep: </h1>
+    
+    <% ServletContext sc = this.getServletContext();
+        if (sc.getAttribute("register")=="error") {%>
+    <h3 style="color:red">Wystąpił problem z rejestracją, spróbuj ponownie!</h3>
+    <%sc.removeAttribute("register");
+        }%>
+
     <form action="testregister.jsp" method="post">
         <div class="block">
-            <label>Login:</label>
-            <input type="text" name="login"/>
+            <label>Nazwa:</label>
+            <input type="text" name="nazwa"/>
         </div>
         <div class="block">
-            <label>E-mail:</label>
-            <input type="text" name="email"/>
+            <label>Adres:</label>
+            <input type="text" name="adres"/>
         </div>
         <div class="block">
-            <label>Hasło:</label>
-            <input type="password" name="password"/>
+            <label>Miasto:</label>
+            <input type="text" name="miasto"/>
         </div>
-        <input type="submit" value="Załóż konto"/>
+        <input type="submit" value="Dodaj sklep"/>
     </form>
 </div>

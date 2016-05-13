@@ -10,6 +10,7 @@
     try {
         Connection connection = DBconnection.getMySQLConnection("danelogowania");
         Statement stmt = connection.createStatement();
+        ServletContext sc = this.getServletContext();
         ResultSet rs = stmt.executeQuery(
                 "select login, password from user where login='"
                 + username + "' and password = '" + password + "'");
@@ -17,12 +18,12 @@
         if (rs.next()) {
             session = request.getSession();
             session.setAttribute("user", username);
-            ServletContext sc = this.getServletContext();
             sc.setAttribute("user", username);
             exists = true;
         }
         if (exists == false) {
             response.sendRedirect("/Projekt/login");
+            sc.setAttribute("login", "error");
         } else {
             String path = null;
             Cookie[] cookies = request.getCookies();
@@ -34,9 +35,9 @@
                 }
             }
             if (path == null) {
-                response.sendRedirect("/Projekt");
+                response.sendRedirect("/Projekt/glowna");
             } else {
-                String tmp = "/Projekt/" + path;
+                String tmp = "/Projekt" + path;
                 response.sendRedirect(tmp);
             }
         }

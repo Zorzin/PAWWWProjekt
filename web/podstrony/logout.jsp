@@ -5,5 +5,5 @@
     sc.removeAttribute("user");
     session.setAttribute("user", null);
     session.invalidate();
-    response.sendRedirect("/Projekt");
+    response.sendRedirect("/Projekt/glowna");
 %>
