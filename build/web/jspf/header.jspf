@@ -20,7 +20,7 @@
                     <input type="button" value="Wyloguj" onclick="location.href = 'logout'" />
                     <% } %>
                 </div>
-                <a href="">
+                <a href="./">
                     <img src="images/logo.jpg" id="logo" alt="logo">
                 </a>
             </div>

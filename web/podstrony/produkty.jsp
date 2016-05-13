@@ -1,74 +1,39 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div id="categoryRightColumn">
+
+
     <table id="productTable">
-        <tr>
-            <td class="lightBlue">
-                <img src="#" alt="product image">
-            </td>
-            <td class="lightBlue">
-                [ product name ]
-                <br>
-                <span class="smallText">[ product description ]</span>
-            </td>
-            <td class="lightBlue">[ price ]</td>
-            <td class="lightBlue">
-                <form action="#" method="post">
-                    <input type="submit" value="purchase button">
-                </form>
-            </td>
-        </tr>
 
-        <tr>
-            <td class="white">
-                <img src="#" alt="product image">
-            </td>
-            <td class="white">
-                [ product name ]
-                <br>
-                <span class="smallText">[ product description ]</span>
-            </td>
-            <td class="white">[ price ]</td>
-            <td class="white">
-                <form action="#" method="post">
-                    <input type="submit" value="purchase button">
-                </form>
-            </td>
-        </tr>
+        <c:forEach var="product" items="${produkty}" varStatus="iter">
+            <tr class="${((iter.index % 2) == 0) ? 'lightBlue' : 'white'}">
+                <td>
+                    <img src="${initParam.productImagePath}${product.sciezka}.png"
+                         alt="<c:out value='${product.sciezka}'/>">
+                </td>
 
-        <tr>
-            <td class="lightBlue">
-                <img src="#" alt="product image">
-            </td>
-            <td class="lightBlue">
-                [ product name ]
-                <br>
-                <span class="smallText">[ product description ]</span>
-            </td>
-            <td class="lightBlue">[ price ]</td>
-            <td class="lightBlue">
-                <form action="#" method="post">
-                    <input type="submit" value="purchase button">
-                </form>
-            </td>
-        </tr>
+                <td>
+                    <c:out value="${product.nazwa}"/>
+                    <br>
+                    <span class="smallText"><c:out value='${product.opis}'/></span>
+                </td>
 
-        <tr>
-            <td class="white">
-                <img src="#" alt="product image">
-            </td>
-            <td class="white">
-                [ product name ]
-                <br>
-                <span class="smallText">[ product description ]</span>
-            </td>
-            <td class="white">[ price ]</td>
-            <td class="white">
-                <form action="#" method="post">
-                    <input type="submit" value="purchase button">
-                </form>
-            </td>
-        </tr>
+                <td><fmt:formatNumber type="currency" currencySymbol="&euro; " value="${product.cena}"/></td>
+
+                <td>
+                    <form action="<c:url value='addToCart'/>" method="post">
+                        <input type="hidden"
+                               name="productId"
+                               value="${product.id}">
+                        <input type="submit"
+                               name="submit"
+                               value="<c:out value='addToCart'/>">
+                    </form>
+                </td>
+            </tr>
+
+        </c:forEach>
+
     </table>
 </div>
-

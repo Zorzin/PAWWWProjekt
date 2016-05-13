@@ -101,6 +101,13 @@ td, th {
     border-right: 1px solid #ddd;
     min-height: 70vh;
 }
+#reglog{
+    float: left;
+    padding-top: 40px;
+    text-align: center;
+    min-height: 70vh;
+    width: 50%;
+}
 #login input{
     margin: 5px;
 }
@@ -223,7 +230,7 @@ input:focus, textarea:focus {
     padding-left: 20px;
 }
 #productTable { 
-    width: 600px;
+    width: 100% ;
 }
 
 #productTable tr { 
@@ -232,6 +239,7 @@ input:focus, textarea:focus {
 
 #productTable td { 
     width: 145px;
+    text-align: center;
 }
 
 .lightBlue { background-color: #edf8f7 }

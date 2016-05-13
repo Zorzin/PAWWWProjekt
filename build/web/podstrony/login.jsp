@@ -9,10 +9,10 @@
             <input type="submit" value="Zaloguj"/>
         </form>
     </div>
-    <div id="reg">
+    <div id="reglog">
         <h1> Załóż nowe konto: </h1>
         <form>
-            <input type="button" value="Załóż konto"/>
+            <input type="button" value="Załóż konto" onclick="location.href = 'rejestracja'"/>
         </form>
     </div>
 </div>

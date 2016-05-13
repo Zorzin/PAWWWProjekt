@@ -5,10 +5,16 @@
  */
 package servlet;
 
+import klasy.Produkty;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +29,7 @@ import javax.servlet.http.HttpSession;
 public class ServletKontrolny extends HttpServlet {
 
     private List<String> _lista = new ArrayList<String>();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,8 +43,8 @@ public class ServletKontrolny extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */ 
-            
+            /* TODO output your page here. You may use following sample code. */
+
         }
     }
 
@@ -58,13 +65,31 @@ public class ServletKontrolny extends HttpServlet {
         if (userPath.equals("/login")) {
             // TODO: Implement login request
             userPath = "/login";
-            
+
         } else if (userPath.equals("/rejestracja")) {
             // TODO: Implement rejestracja page request
             userPath = "/register";
-            
+
         } else if (userPath.equals("/produkty")) {
             // TODO: Implement produkty page request
+            // Wczytanie produktow
+            List<Produkty> lista = new ArrayList<Produkty>();
+            try {
+                Connection connection = DBconnection.getMySQLConnection("danelogowania");
+                Statement stmt = connection.createStatement();
+                ResultSet rs = stmt.executeQuery("select * from produkty");
+                while (rs.next()) {
+                    System.out.println("weszlo");
+                    Produkty produkty = new Produkty(rs.getInt("idprodukty"),rs.getString("nazwa"), rs.getString("opis"), 
+                            rs.getDouble("cena"), rs.getString("sciezka"), rs.getInt("ilosc"), 
+                            rs.getString("kategoria"));
+                    lista.add(produkty);
+                }
+            request.setAttribute("produkty", lista);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         } else if (userPath.equals("/koszyk")) {
             // TODO: Implement koszyk request
@@ -72,10 +97,10 @@ public class ServletKontrolny extends HttpServlet {
         } else if (userPath.equals("/kontakt")) {
             // TODO: Implement kontakt request
 
-        } else if(userPath.equals("/logout")){
+        } else if (userPath.equals("/logout")) {
             //Obsluga cookie
             int i = _lista.size();
-            Cookie cookie = new Cookie(session.getAttribute("user").toString(),_lista.get(i-1));
+            Cookie cookie = new Cookie(session.getAttribute("user").toString(), _lista.get(i - 1));
 
             // Usunie po 1h.
             cookie.setMaxAge(60 * 60);
@@ -88,6 +113,7 @@ public class ServletKontrolny extends HttpServlet {
         String tmp = userPath.substring(userPath.lastIndexOf("/"));
         _lista.add(tmp);
         try {
+            
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception ex) {
             ex.printStackTrace();
