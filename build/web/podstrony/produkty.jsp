@@ -28,7 +28,7 @@
                                value="${product.id}">
                         <input type="submit"
                                name="submit"
-                               value="<c:out value='addToCart'/>">
+                               value="<c:out value='Dodaj do listy'/>">
                     </form>
                 </td>
             </tr>

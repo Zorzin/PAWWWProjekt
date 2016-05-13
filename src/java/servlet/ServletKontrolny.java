@@ -91,8 +91,9 @@ public class ServletKontrolny extends HttpServlet {
                 e.printStackTrace();
             }
 
-        } else if (userPath.equals("/koszyk")) {
+        } else if (userPath.equals("/lista")) {
             // TODO: Implement koszyk request
+            System.out.println("koszyk");
 
         } else if (userPath.equals("/kontakt")) {
             // TODO: Implement kontakt request

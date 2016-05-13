@@ -227,7 +227,6 @@ input:focus, textarea:focus {
     margin-top: 10px;
     width: 100%;
     float: center;
-    padding-left: 20px;
 }
 #productTable { 
     width: 100% ;
@@ -247,4 +246,42 @@ input:focus, textarea:focus {
 .white { background-color: #fff }
 
 .smallText { font-size: small }
+
+
+/** lista */
+
+
+#actionBar {
+    margin: 30px;
+    width: 750px;
+    text-align: center;
+}
+
+#subtotal { margin: 40px 0 20px 430px }
+
+#cartTable { width: 100% }
+
+#cartTable td {
+    width: 145px;
+    height: 90px;
+}
+#singleColumn {
+    margin: 20px 30px;
+    text-align: left;
+}
+
+.header {
+    background-color: #c3e3e0;
+    height: 30px;
+}
+
+.bubble {
+    font-weight: bold;
+    background-color: #f5eabe;
+    padding: 5px;
+    color: inherit;
+    display: inline;
+    border-radius: 4px;
+}
+.hMargin { margin: 0 30px }
 
