@@ -10,8 +10,9 @@
     </filter>
     <filter-mapping>
         <filter-name>koszykRejestracja</filter-name>
-        <url-pattern>/koszyk</url-pattern>
+        <url-pattern>/lista</url-pattern>
         <url-pattern>/rejestracja</url-pattern>
+        <url-pattern>/Dodaj</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>login</filter-name>

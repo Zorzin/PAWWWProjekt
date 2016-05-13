@@ -52,14 +52,14 @@
                     <td style="font-size:9px;">
                         <a style="color:#000; text-decoration:none;" href="/historia">
                             zobacz więcej
-                        </a> 
-                        <img style="vertical-align:middle;" src="images/dalej.jpg" width="38" height="38">
+                        
+                        <img style="vertical-align:middle;" src="images/dalej.jpg" width="38" height="38"></a> 
                     </td>
                     <td style="font-size:9px;">
                         <a style="color:#000; text-decoration:none;" href="/Projekt/sklepy">
                             zobacz więcej
-                        </a> 
-                        <img style="vertical-align:middle;" src="images/dalej.jpg" width="38" height="38">
+                         
+                        <img style="vertical-align:middle;" src="images/dalej.jpg" width="38" height="38"></a>
                     </td>
                 </tr>
             </tbody></table>

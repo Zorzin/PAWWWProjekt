@@ -32,7 +32,7 @@
                     <li><a href="/Projekt/glowna">Strona główna</a></li>
                     <li><a href="/Projekt/produkty">Produkty</a></li>
                     <% if(session.getAttribute("user")!=null){ %>
-                    <li><a href="/Projekt/koszyk">Koszyk</a></li>
+                    <li><a href="/Projekt/lista">Koszyk</a></li>
                     <li><a href="/Projekt/rejestracja">Dodaj sklep</a></li>
                     <% } %>
                     <li id="last"><a href="/Projekt/kontakt">Kontakt</a></li>
