@@ -4,16 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/lista.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/index.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/produkty.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/login.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/testlogin.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/servlet/Dodaj.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/klasy/Produkty.java</file>
             <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/klasy/Listaprodukt.java</file>
             <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/servlet/ServletKontrolny.java</file>
             <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/klasy/Lista.java</file>
-            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/login.jsp</file>
-            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/testlogin.jsp</file>
             <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/sklepy.jsp</file>
-            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/servlet/Dodaj.java</file>
             <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/servlet/UpdateCart.java</file>
-            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/klasy/Produkty.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/jspf/header.jspf</file>
         </group>
     </open-files>
 </project-private>

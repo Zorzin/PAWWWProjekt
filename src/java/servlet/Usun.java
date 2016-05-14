@@ -7,20 +7,21 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import klasy.Lista;
 import klasy.Produkty;
 
 /**
  *
  * @author zorzi
  */
-public class UpdateCart extends HttpServlet {
+public class Usun extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +32,6 @@ public class UpdateCart extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    public Lista lista;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -39,29 +39,18 @@ public class UpdateCart extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             ServletContext sc = this.getServletContext();
             int id = Integer.parseInt(request.getParameter("productId"));
-            String ilosc = request.getParameter("quantity");
-            List<Produkty> listaProdukty = (List)sc.getAttribute("produkty");
-            synchronized (getServletContext()) {
-                lista = (Lista)sc.getAttribute("obiektlista");
-                lista.update(checkid(id, listaProdukty), ilosc);
+            try {
+                Connection connection = DBconnection.getMySQLConnection("danelogowania");
+                Statement stmt = connection.createStatement();
+                stmt.execute("delete from produkty where idprodukty="+id+";");
+                
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            sc.setAttribute("obiektlista", lista);
-            sc.setAttribute("listaprod", lista.getProdukty());
-            request.getRequestDispatcher("./podstrony/lista.jsp").forward(request, response);
+            request.getRequestDispatcher("./").forward(request, response);
         }
     }
-    public Produkty checkid(int id, List<Produkty> lista)
-    {
-        
-        for(Produkty produkt : lista )
-        {
-            if(id==produkt.getId())
-            {
-                return produkt;
-            }
-        }
-        return null;
-    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

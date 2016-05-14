@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import klasy.Lista;
+import klasy.Listaprodukt;
 
 /**
  *
@@ -71,21 +73,25 @@ public class ServletKontrolny extends HttpServlet {
         } else if (userPath.equals("/produkty")) {
             // TODO: Implement produkty page request
             // Wczytanie produktow
+            if (session.getAttribute("user") != null) {
+                deleteCookie(request, response);
+                makeCookie(request, response, tmp);
+            }
             List<Produkty> lista = new ArrayList<Produkty>();
             try {
                 Connection connection = DBconnection.getMySQLConnection("danelogowania");
                 Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery("select * from produkty");
                 while (rs.next()) {
-                    Produkty produkty = new Produkty(rs.getInt("idprodukty"),rs.getString("nazwa"), rs.getString("opis"), 
-                            rs.getDouble("cena"), rs.getString("sciezka"), rs.getInt("ilosc"), 
+                    Produkty produkty = new Produkty(rs.getInt("idprodukty"), rs.getString("nazwa"), rs.getString("opis"),
+                            rs.getDouble("cena"), rs.getString("sciezka"), rs.getInt("ilosc"),
                             rs.getString("kategoria"));
                     lista.add(produkty);
                 }
-            ServletContext sc = this.getServletContext();
-            sc.setAttribute("produkty", lista);
-            request.setAttribute("produkty", lista);
-                
+                ServletContext sc = this.getServletContext();
+                sc.setAttribute("produkty", lista);
+                request.setAttribute("produkty", lista);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -95,41 +101,46 @@ public class ServletKontrolny extends HttpServlet {
                 deleteCookie(request, response);
                 makeCookie(request, response, tmp);
             }
-        } else if (userPath.equals("/koszyk")) {
-            // TODO: Implement koszyk request
-            if (session.getAttribute("user") != null) {
-                deleteCookie(request, response);
-                makeCookie(request, response, tmp);
+            ServletContext sc = this.getServletContext();
+            Lista lista = (Lista) sc.getAttribute("obiektlista");
+            if (lista != null) {
+                List<Listaprodukt> list = lista.getProdukty();
+                check(list);
+                sc.setAttribute("listaprod", lista.getProdukty());
             }
-
         } else if (userPath.equals("/kontakt")) {
             // TODO: Implement kontakt request
             if (session.getAttribute("user") != null) {
                 deleteCookie(request, response);
                 makeCookie(request, response, tmp);
             }
-
-
-        } else if (userPath.equals("/glowna")){
+        } else if (userPath.equals("/glowna")) {
             if (session.getAttribute("user") != null) {
                 deleteCookie(request, response);
                 makeCookie(request, response, "/");
+            }
+        } else if (userPath.equals("/edytuj")) {
+            if (session.getAttribute("user") != null) {
+                deleteCookie(request, response);
+                makeCookie(request, response, tmp);
+            }
+        }else if (userPath.equals("/dodajprodukt")) {
+            if (session.getAttribute("user") != null) {
+                deleteCookie(request, response);
+                makeCookie(request, response, tmp);
             }
         }
 
         // use RequestDispatcher to forward request internally
         String url;
-        if(!userPath.equals("/glowna"))
-        {
+        if (!userPath.equals("/glowna")) {
             url = "./podstrony" + userPath + ".jsp";
-        }
-        else
-        {
+        } else {
             url = "/";
         }
 
         try {
-            
+
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -180,6 +191,32 @@ public class ServletKontrolny extends HttpServlet {
                     cookie.setMaxAge(0);
                 }
             }
+        }
+    }
+
+    public void check(List<Listaprodukt> lista) {
+
+        for (Listaprodukt produkt : lista) {
+
+            Update(produkt.getProdukt(), produkt.getProdukt().getId());
+        }
+    }
+
+    private void Update(Produkty produkty, int id) {
+        try {
+            Connection connection = DBconnection.getMySQLConnection("danelogowania");
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("select nazwa, opis, cena, ilosc, sciezka, kategoria from produkty where idprodukty=" + id + ";");
+            while (rs.next()) {
+                produkty.setCena(rs.getDouble("cena"));
+                produkty.setIlosc(rs.getInt("ilosc"));
+                produkty.setNazwa(rs.getString("nazwa"));
+                produkty.setOpis(rs.getString("opis"));
+                produkty.setSciezka(rs.getString("sciezka"));
+                produkty.setKategoria(rs.getString("kategoria"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -30,6 +30,22 @@
         <servlet-name>UpdateCart</servlet-name>
         <servlet-class>servlet.UpdateCart</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Edytuj</servlet-name>
+        <servlet-class>servlet.Edytuj</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ZapiszEdytuj</servlet-name>
+        <servlet-class>servlet.ZapiszEdytuj</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Usun</servlet-name>
+        <servlet-class>servlet.Usun</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DodajProdukt</servlet-name>
+        <servlet-class>servlet.DodajProdukt</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletKontrolny</servlet-name>
         <url-pattern>/glowna</url-pattern>
@@ -37,6 +53,14 @@
     <servlet-mapping>
         <servlet-name>ServletKontrolny</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletKontrolny</servlet-name>
+        <url-pattern>/edytuj</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletKontrolny</servlet-name>
+        <url-pattern>/dodajprodukt</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletKontrolny</servlet-name>
@@ -69,6 +93,22 @@
     <servlet-mapping>
         <servlet-name>UpdateCart</servlet-name>
         <url-pattern>/UpdateCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Edytuj</servlet-name>
+        <url-pattern>/Edytuj</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ZapiszEdytuj</servlet-name>
+        <url-pattern>/ZapiszEdytuj</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Usun</servlet-name>
+        <url-pattern>/Usun</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DodajProdukt</servlet-name>
+        <url-pattern>/DodajProdukt</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

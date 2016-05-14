@@ -1,8 +1,15 @@
+<%@page import="servlet.DBconnection"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<sql:query var="result" dataSource="jdbc/sklepy">
+<sql:setDataSource var="sklepy"
+     url="jdbc:mysql://localhost:3306/sklepydb"
+     user="root"  password="admin"/>
+<sql:query var="result" dataSource="${sklepy}">
     SELECT nazwa, adres, miasto FROM sklep
 </sql:query>
 <div class="info_right">

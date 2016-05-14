@@ -7,6 +7,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
@@ -34,6 +37,7 @@ public class Dodaj extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     public Lista lista;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -41,21 +45,14 @@ public class Dodaj extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             ServletContext sc = this.getServletContext();
             int id = Integer.parseInt(request.getParameter("productId"));
-            List<Produkty> listaProdukty = (List)sc.getAttribute("produkty");
+            List<Produkty> listaProdukty = (List) sc.getAttribute("produkty");
             synchronized (getServletContext()) {
-                lista = (Lista)sc.getAttribute("lista");
-                if(lista==null)
-                {
-                    System.out.println("dodalo nowy");
+                lista = (Lista) sc.getAttribute("obiektlista");
+                if (lista == null) {
                     lista = new Lista();
-                    sc.setAttribute("lista", lista);
                     lista.addProdukt(checkid(id, listaProdukty));
-                    
-                }
-                else
-                {
-                    System.out.println("dodalo do starego");
-                    System.out.println(lista.getIloscProduktow());
+
+                } else {
                     lista.addProdukt(checkid(id, listaProdukty));
                 }
             }
@@ -64,20 +61,17 @@ public class Dodaj extends HttpServlet {
             request.getRequestDispatcher("./podstrony/lista.jsp").forward(request, response);
         }
     }
-    
-    public Produkty checkid(int id, List<Produkty> lista)
-    {
-        
-        for(Produkty produkt : lista )
-        {
-            if(id==produkt.getId())
-            {
+
+    public Produkty checkid(int id, List<Produkty> lista) {
+
+        for (Produkty produkt : lista) {
+            if (id == produkt.getId()) {
                 return produkt;
             }
         }
         return null;
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
