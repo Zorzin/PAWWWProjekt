@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.ServletContext;
@@ -76,6 +77,7 @@ public class ServletKontrolny extends HttpServlet {
             if (session.getAttribute("user") != null) {
                 deleteCookie(request, response);
                 makeCookie(request, response, tmp);
+                AddAktywnosc(request, response, "odwiedzono strone: produkty");
             }
             List<Produkty> lista = new ArrayList<Produkty>();
             try {
@@ -100,6 +102,7 @@ public class ServletKontrolny extends HttpServlet {
             if (session.getAttribute("user") != null) {
                 deleteCookie(request, response);
                 makeCookie(request, response, tmp);
+                AddAktywnosc(request, response, "odwiedzono strone: lista");
             }
             ServletContext sc = this.getServletContext();
             Lista lista = (Lista) sc.getAttribute("obiektlista");
@@ -113,21 +116,25 @@ public class ServletKontrolny extends HttpServlet {
             if (session.getAttribute("user") != null) {
                 deleteCookie(request, response);
                 makeCookie(request, response, tmp);
+                AddAktywnosc(request, response, "odwiedzono strone: kontakt");
             }
         } else if (userPath.equals("/glowna")) {
             if (session.getAttribute("user") != null) {
                 deleteCookie(request, response);
                 makeCookie(request, response, "/");
+                AddAktywnosc(request, response, "odwiedzono strone: glowna");
             }
         } else if (userPath.equals("/edytuj")) {
             if (session.getAttribute("user") != null) {
                 deleteCookie(request, response);
                 makeCookie(request, response, tmp);
+                AddAktywnosc(request, response, "odwiedzono strone: edytuj");
             }
-        }else if (userPath.equals("/dodajprodukt")) {
+        } else if (userPath.equals("/dodajprodukt")) {
             if (session.getAttribute("user") != null) {
                 deleteCookie(request, response);
                 makeCookie(request, response, tmp);
+                AddAktywnosc(request, response, "odwiedzono strone: dodaj produkty");
             }
         }
 
@@ -219,4 +226,35 @@ public class ServletKontrolny extends HttpServlet {
             e.printStackTrace();
         }
     }
+
+    private void AddAktywnosc(HttpServletRequest request,
+            HttpServletResponse response, String nazwa)
+            throws ServletException, IOException {
+        try {
+            ServletContext sc = this.getServletContext();
+            Connection con = DBconnection.getMySQLConnection("danelogowania");
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery("select id from aktywnosc");
+            int id = 0;
+            while (rs.next()) {
+                if (id < rs.getInt("id")) {
+                    id = rs.getInt("id");
+                }
+            }
+            id = id + 1;
+            Date currentTime = new Date();
+            String data = String.format("%tD %tr", currentTime, currentTime);
+            Statement st = con.createStatement();
+            String sql = "insert into aktywnosc(id,user,nazwa, data) VALUES ("
+                    + id + ",'" + sc.getAttribute("user") + "','"
+                    + nazwa + "','" + data + "')";
+
+            st.executeUpdate(sql);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -19,7 +19,7 @@ public class DBconnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/" + name;
-            connection = DriverManager.getConnection(url, "root", "admin");
+            connection = DriverManager.getConnection(url, "root", "root");
 
             if (connection.equals(null)) {
                 System.out.println("connection was failed");
