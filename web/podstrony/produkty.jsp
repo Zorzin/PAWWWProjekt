@@ -60,7 +60,7 @@
 
         </c:forEach>
         <td>
-            <form action="<c:url value='./dodajprodukt'/>" method="post">
+            <form action="<c:url value='./dodajprodukt'/>">
                 <input type="submit"
                        name="submit"
                        value="<c:out value='Dodaj produkt'/>">
