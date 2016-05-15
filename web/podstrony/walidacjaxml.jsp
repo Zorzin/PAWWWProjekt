@@ -10,7 +10,7 @@
 <%
     ServletContext sc = this.getServletContext();
     String name = sc.getAttribute("xml").toString();
-    Source schemaFile = new StreamSource(new File("C:\\Users\\marcin\\Desktop\\PAWWWProjekt-master\\PAWWWProjekt-master\\web\\schemat.xsd"));
+    Source schemaFile = new StreamSource(new File("C:\\Users\\zorzi\\Documents\\NetBeansProjects\\PAWWWProjekt-master\\web\\schemat.xsd"));
     Source xmlFile = new StreamSource(new File("D:\\log\\koszyk-" + name + ".xml"));
     SchemaFactory schemaFactory = SchemaFactory
             .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);

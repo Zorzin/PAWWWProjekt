@@ -97,19 +97,14 @@
         marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
         Object i = sc.getAttribute("user");
         String name = i.toString();
-        File f = new File("D:\\log\\koszyk-" + name + ".xml");
-        if (f.exists()) {
+        File path = new File("D:\\log\\koszyk-" + name + ".xml");
+        marshaller.marshal(element, path);
+        sc.setAttribute("xml",name);
+        File f = new File("D:\\log\\koszyk-"+name+".txt");
+        if (f.exists())
+                {
             f.delete();
         }
-<<<<<<< HEAD
-        
-        sc.removeAttribute("listaprod");
-        sc.removeAttribute("obiektlista");
-=======
-        marshaller.marshal(element, f);
-        sc.setAttribute("xml",name);
-        
->>>>>>> 8b3cc197a84ad9780280c8a64f9b1e3e6592b858
         request.getRequestDispatcher("/podstrony/walidacjaxml.jsp").forward(request, response);
     } else {
         
@@ -135,4 +130,3 @@
         <%
     }
 %>
-<h1>Za mało produktów na stanie, koszyk zapisany!</h1>
