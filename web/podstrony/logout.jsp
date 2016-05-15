@@ -9,6 +9,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page errorPage="errorpage" %>
 
 <%
     System.out.println("Logout");

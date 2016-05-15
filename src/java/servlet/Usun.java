@@ -49,10 +49,8 @@ public class Usun extends HttpServlet {
                 for (Listaprodukt produkt : lista.getProdukty()) {
                     if(produkt.getProdukt().getId()==id)
                     {
-                        System.out.println(lista.getSuma());
                         lista.getProdukty().remove(produkt);
                         lista.setSuma(lista.getSubtotal());
-                        System.out.println(lista.getSuma());
                     }
                 }
                 sc.setAttribute("obiektlista", lista);

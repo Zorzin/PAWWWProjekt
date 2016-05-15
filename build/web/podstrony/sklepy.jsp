@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ page errorPage="errorpage" %>
 <sql:setDataSource var="sklepy"
      url="jdbc:mysql://localhost:3306/sklepydb"
       user="root"  password="admin"/>
