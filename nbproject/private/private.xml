@@ -3,11 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt/PAWWWProjekt-master/src/java/servlet/ServletKontrolny.java</file>
-            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt/PAWWWProjekt-master/web/testlogin.jsp</file>
-            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt/PAWWWProjekt-master/web/podstrony/logout.jsp</file>
-            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt/PAWWWProjekt-master/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/marcin/Desktop/PAWWWProjekt/PAWWWProjekt-master/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/index.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/kontakt.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/lista.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/filters/koszykRejestracja.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/produkty.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/filters/login.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/build/generated-sources/jaxb/xml/Datowanie.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/servlet/ZapiszEdytuj.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/testlogin.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/errorpage.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/register.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/servlet/Dodaj.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/walidacjaxml.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/realizacjazlecenia.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/podstrony/logout.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/klasy/Lista.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/servlet/Usun.java</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/web/testregister.jsp</file>
+            <file>file:/C:/Users/zorzi/Documents/NetBeansProjects/PAWWWProjekt-master/src/java/servlet/UpdateCart.java</file>
         </group>
     </open-files>
 </project-private>

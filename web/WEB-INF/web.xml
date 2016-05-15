@@ -17,7 +17,6 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/podstrony/errorpage.jsp</location>
     </error-page>
-    
     <filter>
         <filter-name>login</filter-name>
         <filter-class>filters.login</filter-class>
@@ -38,6 +37,18 @@
         <filter-name>login</filter-name>
         <url-pattern>/login</url-pattern>
     </filter-mapping>
+    <listener>
+        <description>HttpSessionAttributeListener</description>
+        <listener-class>listener.SessionListener</listener-class>
+    </listener>
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>listener.ContextListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>debug</param-name>
+        <param-value>true</param-value>
+    </context-param>
     <servlet>
         <servlet-name>ServletKontrolny</servlet-name>
         <servlet-class>servlet.ServletKontrolny</servlet-class>
@@ -104,6 +115,7 @@
         <url-pattern>/rejestracja</url-pattern>
         <url-pattern>/lista</url-pattern>
         <url-pattern>/logout</url-pattern>
+        <url-pattern>/liczbasesji</url-pattern>
         <url-pattern>/edytuj</url-pattern>
         <url-pattern>/produkty</url-pattern>
         <url-pattern>/realizacjazlecenia</url-pattern>

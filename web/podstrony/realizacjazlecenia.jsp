@@ -1,8 +1,3 @@
-<%-- 
-    Document   : realizacjazlecenia
-    Created on : 2016-05-15, 13:29:39
-    Author     : marcin
---%>
 <%@page import="java.nio.file.Path"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="java.io.FileWriter"%>
@@ -100,38 +95,44 @@
         Marshaller marshaller = context.createMarshaller();
 
         marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
-        String path = "d:\\log\\zamowienie.xml";
-
-        File os = new File(path);
-        marshaller.marshal(element, os);
-        Object  i = sc.getAttribute("user");
-         String name = i.toString();
-        File f = new File("D://log//koszyk-"+name+".txt");
-        if(f.exists())
-        {
+        Object i = sc.getAttribute("user");
+        String name = i.toString();
+        File f = new File("D:\\log\\koszyk-" + name + ".xml");
+        if (f.exists()) {
             f.delete();
         }
+<<<<<<< HEAD
         
         sc.removeAttribute("listaprod");
         sc.removeAttribute("obiektlista");
+=======
+        marshaller.marshal(element, f);
+        sc.setAttribute("xml",name);
+        
+>>>>>>> 8b3cc197a84ad9780280c8a64f9b1e3e6592b858
         request.getRequestDispatcher("/podstrony/walidacjaxml.jsp").forward(request, response);
     } else {
-        //Dodac co robic gdy wieksza ilosc w zamowieniu niz na stanie
+        
         JSONObject mainobj = new JSONObject();
         JSONArray arr = new JSONArray();
-         for (Listaprodukt produkt : lista.getProdukty()) {
+        for (Listaprodukt produkt : lista.getProdukty()) {
             JSONObject obj = new JSONObject();
             obj.put("id", produkt.getProdukt().getId());
             obj.put("ilosc", produkt.getIlosc());
             arr.add(obj);
-            
+
         }
-         mainobj.put("List:", arr);
-         Object  i = sc.getAttribute("user");
-         String name = i.toString();
-         try (FileWriter file = new FileWriter("D://log//koszyk-"+name+".txt")) {
-			file.write(mainobj.toJSONString());
-		}
+        mainobj.put("List:", arr);
+        Object i = sc.getAttribute("user");
+        String name = i.toString();
+        try (FileWriter file = new FileWriter("D:\\log\\koszyk-" + name + ".txt")) {
+            file.write(mainobj.toJSONString());
+        }
+        %>
+        <h2 style="color:red">Nie zrealizowano zamówienia!</h2>
+        <h2>Brak dostępnych produktów.<br>
+        Realizacja odłożona w czasie.</h2>
+        <%
     }
 %>
 <h1>Za mało produktów na stanie, koszyk zapisany!</h1>
