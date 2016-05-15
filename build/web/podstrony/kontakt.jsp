@@ -1,16 +1,33 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "kontakt.txt";
 
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "<h1>Projekt PAWWW</h1>";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<h2>' + 
+        arr[i].display + '</h2>';
+    }
+    document.getElementById("kolumna").innerHTML = out;
+}
+</script>
 <div id="contact">
     <div class="kontakt">
         <div class="wizytowka">
             <table id="maintable">
                 <tr>
                     <th id="kolumna">
-                        <h1>Projekt PAWWW</h1>
-                        <h2>Szymon Bakunowicz </h2>
-                        <h2>Marcin Bogdan </h2>
-                        <h2>ul. Wiejska 12 </h2>
-                        <h2>Białystok</h2>
                     </th>
                     <th>
                         <div id="formularz">

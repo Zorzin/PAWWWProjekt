@@ -15,6 +15,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import klasy.Lista;
+import klasy.Listaprodukt;
 import klasy.Produkty;
 
 /**
@@ -42,8 +44,20 @@ public class Usun extends HttpServlet {
             try {
                 Connection connection = DBconnection.getMySQLConnection("danelogowania");
                 Statement stmt = connection.createStatement();
-                stmt.execute("delete from produkty where idprodukty="+id+";");
-                
+                stmt.execute("delete from produkty where idprodukty=" + id + ";");
+                Lista lista = (Lista) sc.getAttribute("obiektlista");
+                for (Listaprodukt produkt : lista.getProdukty()) {
+                    if(produkt.getProdukt().getId()==id)
+                    {
+                        System.out.println(lista.getSuma());
+                        lista.getProdukty().remove(produkt);
+                        lista.setSuma(lista.getSubtotal());
+                        System.out.println(lista.getSuma());
+                    }
+                }
+                sc.setAttribute("obiektlista", lista);
+                sc.setAttribute("listaprod", lista.getProdukty());
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

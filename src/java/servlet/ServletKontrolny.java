@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -30,7 +31,14 @@ import klasy.Listaprodukt;
  * @author marcin
  */
 public class ServletKontrolny extends HttpServlet {
-
+    String baza;
+    
+    public void init() throws ServletException {
+        ServletConfig ctx = this.getServletConfig();
+        baza = ctx.getInitParameter("nazwabazy");
+        ServletContext sc = this.getServletContext();
+        sc.setAttribute("nazwabazy", baza);
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -81,7 +89,7 @@ public class ServletKontrolny extends HttpServlet {
             }
             List<Produkty> lista = new ArrayList<Produkty>();
             try {
-                Connection connection = DBconnection.getMySQLConnection("danelogowania");
+                Connection connection = DBconnection.getMySQLConnection(baza);
                 Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery("select * from produkty");
                 while (rs.next()) {
@@ -110,7 +118,9 @@ public class ServletKontrolny extends HttpServlet {
                 List<Listaprodukt> list = lista.getProdukty();
                 check(list);
                 sc.setAttribute("listaprod", lista.getProdukty());
+                sc.setAttribute("obiektlista", lista);
             }
+            
         } else if (userPath.equals("/kontakt")) {
             // TODO: Implement kontakt request
             if (session.getAttribute("user") != null) {
@@ -205,16 +215,21 @@ public class ServletKontrolny extends HttpServlet {
 
         for (Listaprodukt produkt : lista) {
 
-            Update(produkt.getProdukt(), produkt.getProdukt().getId());
+            if(!Update(produkt.getProdukt(), produkt.getProdukt().getId()))
+            {
+                lista.remove(produkt);
+            }
         }
     }
 
-    private void Update(Produkty produkty, int id) {
+    private boolean Update(Produkty produkty, int id) {
+        boolean b=false;
         try {
-            Connection connection = DBconnection.getMySQLConnection("danelogowania");
+            Connection connection = DBconnection.getMySQLConnection(baza);
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("select nazwa, opis, cena, ilosc, sciezka, kategoria from produkty where idprodukty=" + id + ";");
             while (rs.next()) {
+                b=true;
                 produkty.setCena(rs.getDouble("cena"));
                 produkty.setIlosc(rs.getInt("ilosc"));
                 produkty.setNazwa(rs.getString("nazwa"));
@@ -222,9 +237,11 @@ public class ServletKontrolny extends HttpServlet {
                 produkty.setSciezka(rs.getString("sciezka"));
                 produkty.setKategoria(rs.getString("kategoria"));
             }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return  b;
     }
 
     private void AddAktywnosc(HttpServletRequest request,
@@ -232,7 +249,7 @@ public class ServletKontrolny extends HttpServlet {
             throws ServletException, IOException {
         try {
             ServletContext sc = this.getServletContext();
-            Connection con = DBconnection.getMySQLConnection("danelogowania");
+            Connection con = DBconnection.getMySQLConnection(baza);
             Statement stmt = con.createStatement();
 
             ResultSet rs = stmt.executeQuery("select id from aktywnosc");

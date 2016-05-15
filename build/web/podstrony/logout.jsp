@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+    System.out.println("Logout");
     /* dodanie do bazy informacji o koncu sesji*/
     try {
         Connection con = DBconnection.getMySQLConnection("danelogowania");

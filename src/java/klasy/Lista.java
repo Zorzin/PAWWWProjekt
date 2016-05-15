@@ -18,6 +18,10 @@ public class Lista {
     private List<Listaprodukt> listaproduktow;
     private int ileproduktow;
     private double suma;
+
+    public void setSuma(double suma) {
+        this.suma = suma;
+    }
     
     public Lista()
     {

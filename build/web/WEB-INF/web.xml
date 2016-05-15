@@ -21,6 +21,10 @@
     <servlet>
         <servlet-name>ServletKontrolny</servlet-name>
         <servlet-class>servlet.ServletKontrolny</servlet-class>
+        <init-param>
+            <param-name>nazwabazy</param-name>
+            <param-value>danelogowania</param-value>
+        </init-param>
     </servlet>
     <servlet>
         <servlet-name>Dodaj</servlet-name>
