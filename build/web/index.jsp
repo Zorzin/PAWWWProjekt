@@ -30,7 +30,7 @@
         <table class="more_table">
             <tbody><tr>
                     <td style="font-size:14px;">CO ZNAJDZIESZ U NAS?</td>
-                    <td style="font-size:14px;">HISTORIA FIRMY</td>
+                    <td style="font-size:14px;"></td>
                     <td style="font-size:14px;">NASZE SKLEPY</td>
                 </tr>
                 <tr>
@@ -39,8 +39,6 @@
                         Dbamy nie tylko o twój wygląd ale i o duszę.
                     </td>
                     <td style="color:#a0a0a0; font-size:11px; line-height:14px;">
-                        Jesteśmy firmą z wieloletnim doświadczeniem<br>
-                        Dowiedz się o nas więcej.
                     </td>
                     <td style="color:#a0a0a0; font-size:11px; line-height:14px;">
                         Nasze sklepy dostepne dla Ciebie.<br>
@@ -50,10 +48,6 @@
                 <tr>
                     <td></td>
                     <td style="font-size:9px;">
-                        <a style="color:#000; text-decoration:none;" href="/historia">
-                            zobacz więcej
-                        
-                        <img style="vertical-align:middle;" src="images/dalej.jpg" width="38" height="38"></a> 
                     </td>
                     <td style="font-size:9px;">
                         <a style="color:#000; text-decoration:none;" href="/Projekt/sklepy">

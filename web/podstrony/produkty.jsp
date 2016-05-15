@@ -2,13 +2,14 @@
            uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page errorPage="errorpage" %>
 <div id="categoryRightColumn">
     <table id="productTable">
 
         <c:forEach var="product" items="${produkty}" varStatus="iter">
             <tr class="${((iter.index % 2) == 0) ? 'lightBlue' : 'white'}">
                 <td>
-                    <img src="${initParam.productImagePath}${product.sciezka}.png"
+                    <img src="images/products/${product.sciezka}.png"
                          alt="<c:out value='${product.sciezka}'/>">
                 </td>
 
@@ -59,6 +60,7 @@
             </tr>
 
         </c:forEach>
+            <% if (session.getAttribute("user") != null) { %>
         <td>
             <form action="<c:url value='./dodajprodukt'/>">
                 <input type="submit"
@@ -66,5 +68,6 @@
                        value="<c:out value='Dodaj produkt'/>">
             </form>
         </td>
+        <%}%>
     </table>
 </div>

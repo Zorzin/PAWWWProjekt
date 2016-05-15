@@ -64,4 +64,8 @@
         </c:forEach>
 
       </table>
+            <c:if test="${item.nazwa != null}">
+        <input type="button" value="Realizuj zlecenie" 
+               onclick="location.href = 'realizacjazlecenia'">
+        </c:if>
 </div>

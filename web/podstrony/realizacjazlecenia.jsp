@@ -3,7 +3,10 @@
     Created on : 2016-05-15, 13:29:39
     Author     : marcin
 --%>
-
+<%@page import="java.nio.file.Path"%>
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="java.io.FileWriter"%>
+<%@ page errorPage="errorpage" %>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -30,6 +33,8 @@
 <%@page import="javax.xml.bind.Marshaller"%>
 <%@page import="javax.xml.bind.JAXBException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@ page errorPage="errorpage" %>
 <!DOCTYPE html>
 
 <%
@@ -99,8 +104,31 @@
 
         File os = new File(path);
         marshaller.marshal(element, os);
+        Object  i = sc.getAttribute("user");
+         String name = i.toString();
+        File f = new File("D://log//koszyk-"+name+".txt");
+        if(f.exists())
+        {
+            f.delete();
+        }
+        request.getRequestDispatcher("/podstrony/walidacjaxml.jsp").forward(request, response);
     } else {
         //Dodac co robic gdy wieksza ilosc w zamowieniu niz na stanie
+        JSONObject mainobj = new JSONObject();
+        JSONArray arr = new JSONArray();
+         for (Listaprodukt produkt : lista.getProdukty()) {
+            JSONObject obj = new JSONObject();
+            obj.put("id", produkt.getProdukt().getId());
+            obj.put("ilosc", produkt.getIlosc());
+            arr.add(obj);
+            
+        }
+         mainobj.put("List:", arr);
+         Object  i = sc.getAttribute("user");
+         String name = i.toString();
+         try (FileWriter file = new FileWriter("D://log//koszyk-"+name+".txt")) {
+			file.write(mainobj.toJSONString());
+		}
     }
 %>
 

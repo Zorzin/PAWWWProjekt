@@ -60,6 +60,7 @@
             </tr>
 
         </c:forEach>
+            <% if (session.getAttribute("user") != null) { %>
         <td>
             <form action="<c:url value='./dodajprodukt'/>">
                 <input type="submit"
@@ -67,5 +68,6 @@
                        value="<c:out value='Dodaj produkt'/>">
             </form>
         </td>
+        <%}%>
     </table>
 </div>

@@ -10,7 +10,6 @@
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page errorPage="errorpage" %>
-
 <%
     System.out.println("Logout");
     /* dodanie do bazy informacji o koncu sesji*/
@@ -68,6 +67,8 @@
     /*wylogowanie*/
     ServletContext sc = this.getServletContext();
     sc.removeAttribute("user");
+    sc.removeAttribute("listaprod");
+    sc.removeAttribute("obiektlista");
     session.setAttribute("user", null);
     session.invalidate();
     response.sendRedirect("/Projekt/glowna");

@@ -17,6 +17,7 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/podstrony/errorpage.jsp</location>
     </error-page>
+    
     <filter>
         <filter-name>login</filter-name>
         <filter-class>filters.login</filter-class>
@@ -30,6 +31,8 @@
         <url-pattern>/lista</url-pattern>
         <url-pattern>/rejestracja</url-pattern>
         <url-pattern>/Dodaj</url-pattern>
+        <url-pattern>/dodajprodukt</url-pattern>
+        <url-pattern>/realizacjazlecenia</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>login</filter-name>
@@ -68,46 +71,6 @@
         <servlet-class>servlet.DodajProdukt</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/glowna</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/edytuj</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/dodajprodukt</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/rejestracja</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/produkty</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/lista</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/kontakt</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletKontrolny</servlet-name>
-        <url-pattern>/sklepy</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Dodaj</servlet-name>
         <url-pattern>/Dodaj</url-pattern>
     </servlet-mapping>
@@ -130,6 +93,20 @@
     <servlet-mapping>
         <servlet-name>DodajProdukt</servlet-name>
         <url-pattern>/DodajProdukt</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletKontrolny</servlet-name>
+        <url-pattern>/dodajprodukt</url-pattern>
+        <url-pattern>/glowna</url-pattern>
+        <url-pattern>/kontakt</url-pattern>
+        <url-pattern>/sklepy</url-pattern>
+        <url-pattern>/login</url-pattern>
+        <url-pattern>/rejestracja</url-pattern>
+        <url-pattern>/lista</url-pattern>
+        <url-pattern>/logout</url-pattern>
+        <url-pattern>/edytuj</url-pattern>
+        <url-pattern>/produkty</url-pattern>
+        <url-pattern>/realizacjazlecenia</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

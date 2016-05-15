@@ -2,7 +2,7 @@
 <%@ page import ="java.sql.*" %>
 <%@ page import ="javax.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ page errorPage="errorpage" %>
 <%
     Integer id = 0;
     String nazwa = request.getParameter("nazwa");
@@ -14,7 +14,7 @@
         response.sendRedirect("/Projekt/rejestracja");
     } else {
         try {
-            Connection con = DBconnection.getMySQLConnection("sklepydb");
+            Connection con = DBconnection.getMySQLConnection("danelogowania");
             Statement stmt = con.createStatement();
 
             ResultSet rs = stmt.executeQuery("select id from sklep");

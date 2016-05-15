@@ -4,10 +4,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page errorPage="errorpage" %>
 <sql:setDataSource var="sklepy"
-     url="jdbc:mysql://localhost:3306/sklepydb"
+     url="jdbc:mysql://localhost:3306/danelogowania"
       user="root"  password="admin"/>
 <sql:query var="result" dataSource="${sklepy}">
-    SELECT nazwa, adres, miasto FROM sklep
+    SELECT nazwa, adres, miasto FROM danelogowania.sklep
 </sql:query>
 <div class="info_right">
     <span style="font-size:36px;">

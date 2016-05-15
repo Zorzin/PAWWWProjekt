@@ -16,6 +16,10 @@ import klasy.Listaprodukt;
 public class Lista {
     
     private List<Listaprodukt> listaproduktow;
+
+    public void setListaproduktow(List<Listaprodukt> listaproduktow) {
+        this.listaproduktow = listaproduktow;
+    }
     private int ileproduktow;
     private double suma;
 

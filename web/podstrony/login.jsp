@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page errorPage="errorpage" %>
 <div id="mainpage">
     <!-- main page, ajax pewnie -->
     <div id="log">
