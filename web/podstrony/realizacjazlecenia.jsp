@@ -111,6 +111,9 @@
         {
             f.delete();
         }
+        
+        sc.removeAttribute("listaprod");
+        sc.removeAttribute("obiektlista");
         request.getRequestDispatcher("/podstrony/walidacjaxml.jsp").forward(request, response);
     } else {
         //Dodac co robic gdy wieksza ilosc w zamowieniu niz na stanie
@@ -131,4 +134,4 @@
 		}
     }
 %>
-
+<h1>Za mało produktów na stanie, koszyk zapisany!</h1>
