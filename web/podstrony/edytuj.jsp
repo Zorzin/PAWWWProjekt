@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page errorPage="errorpage" %>
+
 <div id="reg">
     <h1> Edytuj produkt: </h1>
 

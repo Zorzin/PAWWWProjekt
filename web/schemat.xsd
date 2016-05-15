@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="Zamowienie" type="Realizacja" />
+<xs:complexType name="Realizacja">
+    <xs:sequence>
+        <xs:element name="data" type="Date"/>
+        <xs:element name="produkty" type="ItemList"/>
+    </xs:sequence>
+</xs:complexType>
+<xs:complexType name="Date">
+    <xs:sequence>
+        <xs:element name="czasGenerowania" type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+<xs:complexType name="ItemList">
+     <xs:sequence>
+         <xs:element name="item" type="ItemT" maxOccurs="unbounded"/>
+     </xs:sequence>
+</xs:complexType>
+<xs:complexType name="ItemT">
+     <xs:sequence>
+         <xs:element name="nazwa" type="xs:string" />
+         <xs:element name="kategoria" type="xs:string" />
+         <xs:element name="ilosc" type="xs:string" />
+     </xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -31,16 +31,14 @@ import klasy.Listaprodukt;
  * @author marcin
  */
 public class ServletKontrolny extends HttpServlet {
-
     String baza;
-
+    
     public void init() throws ServletException {
         ServletConfig ctx = this.getServletConfig();
         baza = ctx.getInitParameter("nazwabazy");
         ServletContext sc = this.getServletContext();
         sc.setAttribute("nazwabazy", baza);
     }
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -122,7 +120,7 @@ public class ServletKontrolny extends HttpServlet {
                 sc.setAttribute("listaprod", lista.getProdukty());
                 sc.setAttribute("obiektlista", lista);
             }
-
+            
         } else if (userPath.equals("/kontakt")) {
             // TODO: Implement kontakt request
             if (session.getAttribute("user") != null) {
@@ -148,8 +146,6 @@ public class ServletKontrolny extends HttpServlet {
                 makeCookie(request, response, tmp);
                 AddAktywnosc(request, response, "odwiedzono strone: dodaj produkty");
             }
-        } else if (userPath.equals("/errorpage")) {
-
         }
 
         // use RequestDispatcher to forward request internally
@@ -219,20 +215,21 @@ public class ServletKontrolny extends HttpServlet {
 
         for (Listaprodukt produkt : lista) {
 
-            if (!Update(produkt.getProdukt(), produkt.getProdukt().getId())) {
+            if(!Update(produkt.getProdukt(), produkt.getProdukt().getId()))
+            {
                 lista.remove(produkt);
             }
         }
     }
 
     private boolean Update(Produkty produkty, int id) {
-        boolean b = false;
+        boolean b=false;
         try {
             Connection connection = DBconnection.getMySQLConnection(baza);
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("select nazwa, opis, cena, ilosc, sciezka, kategoria from produkty where idprodukty=" + id + ";");
             while (rs.next()) {
-                b = true;
+                b=true;
                 produkty.setCena(rs.getDouble("cena"));
                 produkty.setIlosc(rs.getInt("ilosc"));
                 produkty.setNazwa(rs.getString("nazwa"));
@@ -240,11 +237,11 @@ public class ServletKontrolny extends HttpServlet {
                 produkty.setSciezka(rs.getString("sciezka"));
                 produkty.setKategoria(rs.getString("kategoria"));
             }
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return b;
+        return  b;
     }
 
     private void AddAktywnosc(HttpServletRequest request,
@@ -276,4 +273,5 @@ public class ServletKontrolny extends HttpServlet {
             e.printStackTrace();
         }
     }
+
 }

@@ -2,11 +2,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page errorPage="errorpage" %>
-<sql:setDataSource var="sklepy"
-     url="jdbc:mysql://localhost:3306/sklepydb"
-      user="root"  password="admin"/>
-<sql:query var="result" dataSource="${sklepy}">
+
+<sql:query var="result" dataSource="jdbc/danelogowania">
     SELECT nazwa, adres, miasto FROM sklep
 </sql:query>
 <div class="info_right">

@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page errorPage="errorpage" %>
 <script>
 var xmlhttp = new XMLHttpRequest();
 var url = "kontakt.txt";
