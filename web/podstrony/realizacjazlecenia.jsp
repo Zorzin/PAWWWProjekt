@@ -4,6 +4,7 @@
     Author     : marcin
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
@@ -19,8 +20,6 @@
            uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@page import="xml.InfoTowaru"%>
-<%@page import="xml.DaneTowaru"%>
 <%@page import="xml.Realizacja"%>
 <%@page import="xml.ItemList"%>
 <%@page import="xml.ItemT"%>
@@ -39,14 +38,15 @@
     ServletContext sc = request.getServletContext();
     Lista lista = (Lista) sc.getAttribute("obiektlista");
     Connection connection = DBconnection.getMySQLConnection("danelogowania");
-    Statement stmt = connection.createStatement();
     /*Sprawdzenie czy generować plik xml*/
 
     for (Listaprodukt produkt : lista.getProdukty()) {
         int id = produkt.getProdukt().getId();
         int ilosc = produkt.getIlosc();
-        ResultSet rs = stmt.executeQuery(
-                "select ilosc from produkt where id='" + id + "'");
+        PreparedStatement pstmt = connection.prepareStatement(
+                "select ilosc from produkty where idprodukty = ?");
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
             if (ilosc <= rs.getInt("ilosc")) {
                 wystarczy.add(true);
