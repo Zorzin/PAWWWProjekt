@@ -3,11 +3,11 @@
 <xs:element name="Zamowienie" type="Realizacja" />
 <xs:complexType name="Realizacja">
     <xs:sequence>
-        <xs:element name="data" type="Date"/>
+        <xs:element name="data" type="Datowanie"/>
         <xs:element name="produkty" type="ItemList"/>
     </xs:sequence>
 </xs:complexType>
-<xs:complexType name="Date">
+<xs:complexType name="Datowanie">
     <xs:sequence>
         <xs:element name="czasGenerowania" type="xs:string" />
     </xs:sequence>

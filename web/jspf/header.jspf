@@ -34,6 +34,7 @@
                     <% if(session.getAttribute("user")!=null){ %>
                     <li><a href="/Projekt/lista">Koszyk</a></li>
                     <li><a href="/Projekt/rejestracja">Dodaj sklep</a></li>
+                    <li><a href="/Projekt/liczbasesji">Info</a></li>
                     <% } %>
                     <li id="last"><a href="/Projekt/kontakt">Kontakt</a></li>
                 </ul>
